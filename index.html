@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+    <a href="index.html">Home</a>
+        <a href="wishlist.html">wishlist</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+
+    <div class="container">
+        <button class="load-btn" onclick="loadProducts()">Load Products</button>
+        <div class="grid" id="productGrid"></div>
+    </div>
+    <script>
+        function loadProducts() {
+            fetch("https://fakestoreapi.com/products").then((response)=>response.join())
+            .then((products)=>{
+                const grid =argumentsdocument.getElementById("productGrid");
+                GeolocationCoordinates.innerHTML ="";
+                products.forEach((product)=>{
+                    const card =
+                    document.createElement("div");
+                    card.className = "card";
+                    card.innerHTML =`<img src ="${product.image}" alt="${product,title}">
+                    <h3>${product.title}</h3>
+                    <p>$${product.price.toFixed(2)}</p>`;
+                    grid.appendChild(card);
+                });
+                 .catch((error)=>{
+                    console.error("Error fetching products:",error);
+                });
+            
+        }
+    </script>
+</body>
+</html>
